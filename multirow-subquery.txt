@@ -1,0 +1,21 @@
+-- multirow subquery
+-- when the query return the multiple row is called miltiplerow subquery
+use sakila;
+show tables;
+select * from payment where payment_id=3 or payment_id=2;
+
+-- in operater 
+select *from payment where amount in (select amount from payment where payment_id=3 or payment_id=2);
+
+-- any operter,<any ,>any 
+select *from payment where amount >any (select amount from payment where payment_id=3 or payment_id=2);
+
+-- all operater ,=all ,<all ,>all
+select *from payment where amount <=all (select amount from payment where payment_id=3 or payment_id=2);
+
+-- get all the payment info where amounld should be same as 2 and three 
+-- get all payment info whose amount lagerer then all the amount 
+select month(payment_date) from payment where payment_id=2 or payment_id=3;
+select * from payment where month(payment_date)in (select month(payment_date) from payment where payment_id=2 or payment_id=3);
+
+
