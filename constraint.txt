@@ -1,0 +1,145 @@
+-- table
+-- DDL (data defination language)
+-- create , alter, drop,truncate
+-- creating a database
+create database regex1;
+use regex1;
+-- table create (sno column name)
+create table test1 (sno int);
+describe test1;
+-- DML (data manipulation language)
+-- use insert statement
+insert into test1 values(10);
+select* from test1;
+desc test1;
+create table test2(sno int not null ,salary int);
+insert into test2(sno,salary) values(20,10000);
+insert into test2(sno,salary) values(20, null);
+insert into test2(sno,salary) values(null,1000); -- we have set constraint (error)
+insert into test2(sno) values(1000);
+insert into test2(salary) values(5000000);-- error (because no null and no default set)
+-- default constraint
+select * from test2;
+create table test3(sno int not null default 80, salary int);
+
+insert into test3(salary) values(1000);
+insert into test3(sno) values(5000);
+select * from test3;
+ create table test4(sno int not null,salary int unique default 100);
+ select * from test4;
+ insert into test4(sno,salary) values(1000,20000);
+ insert into test4(sno,salary) values(1001,20000); -- error duplicate value
+ insert into test4(sno) values(600);
+ select * from test4;
+ 
+ insert into test4(sno) values(700); -- error 100 is a value already in table
+insert into test4(sno,salary) values(1001,null);-- multiple null values can be inserted
+insert into test4(sno,salary) values(1001224,null);
+
+
+-- check constraints
+-- conditions (check column ka name, or check conditions)
+create table test7(sno int, salary int,
+check (sno between 1 and 100),
+check (salary in (1000,2000) ));
+
+create table test8(sno int, salary int,check (sno between 1 and 100),check (salary in (1000,2000) ));-- ek hi line mai likh skte hai 
+
+drop table test7;
+create table test7(sno int , salary int,
+constraint regex_test7_sno_chk check (sno between 1 and 100),
+constraint regex_test7_salary_chk check (salary  in (1000,2000) ));
+
+
+insert into test7(sno,salary) values(4,1000);
+select * from test7;
+insert into test7(sno,salary) values(150,1000);-- error
+insert into test7(sno,salary) values(90,1500);-- error
+
+-- you habe a create table employee name 
+-- (emp_id(pk)
+-- emp_name (varchar)
+-- email(unique constraints )
+-- clg(default value)
+-- age(>18)
+-- gardian name should be (palindrome))
+
+create table employee(emp_id int primary  key, emp_name varchar(20),email varchar(40)unique,clg varchar(20) default 'subodh clg',
+age int check(age >18),
+guardian_name varchar(20), check(guardian_name = reverse(guardian_name) ));
+
+select * from employee;
+
+
+
+-- table
+-- DDL (data defination language)
+-- create , alter, drop,truncate
+-- creating a database
+create database regex1;
+use regex1;
+-- table create (sno column name)
+create table test1 (sno int);
+describe test1;
+-- DML (data manipulation language)
+-- use insert statement
+insert into test1 values(10);
+select* from test1;
+desc test1;
+create table test2(sno int not null ,salary int);
+insert into test2(sno,salary) values(20,10000);
+insert into test2(sno,salary) values(20, null);
+insert into test2(sno,salary) values(null,1000); -- we have set constraint (error)
+insert into test2(sno) values(1000);
+insert into test2(salary) values(5000000);-- error (because no null and no default set)
+-- default constraint
+select * from test2;
+create table test3(sno int not null default 80, salary int);
+
+insert into test3(salary) values(1000);
+insert into test3(sno) values(5000);
+select * from test3;
+ create table test4(sno int not null,salary int unique default 100);
+ select * from test4;
+ insert into test4(sno,salary) values(1000,20000);
+ insert into test4(sno,salary) values(1001,20000); -- error duplicate value
+ insert into test4(sno) values(600);
+ select * from test4;
+ 
+ insert into test4(sno) values(700); -- error 100 is a value already in table
+insert into test4(sno,salary) values(1001,null);-- multiple null values can be inserted
+insert into test4(sno,salary) values(1001224,null);
+
+
+-- check constraints
+-- conditions (check column ka name, or check conditions)
+create table test7(sno int, salary int,
+check (sno between 1 and 100),
+check (salary in (1000,2000) ));
+
+create table test8(sno int, salary int,check (sno between 1 and 100),check (salary in (1000,2000) ));-- ek hi line mai likh skte hai 
+
+drop table test7;
+create table test7(sno int , salary int,
+constraint regex_test7_sno_chk check (sno between 1 and 100),
+constraint regex_test7_salary_chk check (salary  in (1000,2000) ));
+
+
+insert into test7(sno,salary) values(4,1000);
+select * from test7;
+insert into test7(sno,salary) values(150,1000);-- error
+insert into test7(sno,salary) values(90,1500);-- error
+
+-- you habe a create table employee name 
+-- (emp_id(pk)
+-- emp_name (varchar)
+-- email(unique constraints )
+-- clg(default value)
+-- age(>18)
+-- gardian name should be (palindrome))
+
+create table employee(emp_id int primary  key, emp_name varchar(20),email varchar(40)unique,clg varchar(20) default 'subodh clg',
+age int check(age >18),
+guardian_name varchar(20), check(guardian_name = reverse(guardian_name) ));
+
+select * from employee;
