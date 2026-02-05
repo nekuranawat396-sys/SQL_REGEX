@@ -1,0 +1,80 @@
+use sakila;
+-- function
+-- block of code => 
+
+
+-- pre-defined => scaler function
+-- scaler => applied for each row 
+
+
+
+
+-- lower and upper function
+select first_name,lower(first_name),last_name from actor;
+
+-- concat function 
+select first_name,last_name,concat(first_name,last_name) from actor;
+select first_name,last_name,concat(first_name,last_name,' ','regex') from actor;
+select* from actor where concat(first_name,last_name)='EDCHASE';
+
+-- concat ws with a seperater 
+select first_name,last_name,concat_ws('_',first_name,last_name) from actor;
+
+-- substr => axtract the  portion (extract data )
+ select first_name,last_name,substr(last_name,3) from actor;
+select first_name,last_name,substr(last_name,-2) from actor;
+ select first_name,last_name,substr(last_name,2,5) from actor;
+  select first_name,last_name,substr(last_name,-3,2) from actor;
+
+-- find where first character in the world
+
+select*from actor  where
+first_name like 'A%'or first_name like'E%';  
+
+-- replace function 
+select first_name,replace(first_name,'A','$') from actor;
+
+-- trim function
+ -- trim (select value) => only for testing  purpose
+ 
+ select char_length('abhi  ');
+ select char_length(trim('abhi  '));
+ select trim('  aabhi');
+-- trim cannot the remove space from middle only remove starting and ending 
+
+-- replace remove the element anywhere but trim only start and end;
+select trim(both 'a' from 'aaanaman');
+ -- apply only a coloumn
+select first_name,trim( both 'A' from first_name) from actor; 
+
+-- lpad and rpad (left padding and right padding)
+
+select lpad ('10294',6,'@');
+
+-- number function 
+-- round 
+select 23.68,round(23.68),round(23.66,1);
+select 23.68,round(23.68),round(23.654,2);
+select 23.68,round(23.56,-1);
+select 23.68,round(127.68,-2);
+select 23.68,round(47.68,-2);
+-- truncate function
+select 23.68,round(47.686,2),truncate(47.68,2);
+
+-- floor function ,ceil function 
+select floor(5.99948),ceil(6.1542216);
+
+-- distinct function will you give the unique value form the coloumn
+
+
+ 
+
+
+ 
+ 
+  
+ 
+
+
+
+

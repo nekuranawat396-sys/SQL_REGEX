@@ -1,0 +1,33 @@
+show databases;
+use sakila;
+create database regexdb;
+show databases;
+use regexdb;
+show tables;
+create table students(sid int,name char(10));
+show tables;
+-- to use database 
+use sakila;
+show tables;
+-- explain table stucture 
+describe actor;
+
+-- select coloumn from table actor
+
+select * from actor;
+select actor_id,first_name from actor;
+select first_name,actor_id from actor;
+
+-- select * from table where condition 
+select * from actor where actor_id=3;
+select * from actor where actor_id>3;
+select * from actor where actor_id!=3; -- <>
+select * from actor where first_name='nick';
+
+select * from actor where first_name >'A'; -- assignment why is with a print
+
+-- and which is a logical operator condition (coloumn > value)
+ select *from actor where actor_id >3 and actor_id >5;
+select *from actor where actor_id>3 and actor_id =1; 
+ 
+ 

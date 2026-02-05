@@ -1,0 +1,39 @@
+use sakila;
+show tables;
+describe actor;
+select *from actor where actor_id=3 or actor_id=6;
+-- between operator find the range of value
+select *from actor where actor_id between 4 and 6; -- cannot bw use before higher value first upon lower value
+
+-- in operator find the specifice value 
+select *from actor where actor_id in (4 ,7);
+
+-- like operators 
+select*from actor where first_name like 'A%';
+select*from actor where first_name like '%ed';
+select*from actor where first_name like 's%r';
+select*from actor where first_name like '%A%';
+
+-- At sny place 
+select*from actor where first_name like 'R%R%';
+
+-- only one character (_ )
+
+select*from actor where first_name like '___';
+
+select*from actor where first_name like 'A_%';
+
+select*from actor where first_name like '_R%';
+
+select*from actor where first_name like '%R_';
+
+select*from actor where first_name like '_A%R_';
+---------------------------------------------
+select*from actor where first_name like 'A%n';
+
+select*from actor where first_name like 'A%a%a';
+
+select*from actor where first_name like '_____';
+
+
+ 
