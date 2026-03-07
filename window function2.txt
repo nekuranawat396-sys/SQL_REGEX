@@ -1,0 +1,55 @@
+use windowdb;
+select * from sales;
+
+-- tinyint(1byte)
+create table test2(sno tinyint);
+describe test2;
+insert into test2 values(128); -- error
+insert into test2 values(true);
+
+create table test3(sno tinyint unsigned); -- 0 to 255
+describe test3;
+insert into test3 values(255); -- allow me
+insert into test3 values(true);
+select*from test3;
+
+create table test4(sno int unsigned); -- 0 to 255
+describe test4;
+insert into test4 values(255); -- allow me
+insert into test4 values(true);
+
+-- samll int = 2 byte =2^16
+-- medium int =3 byte 
+-- int = 4 byte =2^32
+-- big int= 8 byte =2^16
+
+create table test6(amount float,amount2 double);
+insert into test6 values(17.12155464,17.2654546431);
+select*from test6;
+
+-- M,D => M =>total digit ,D => desimal digit 
+create table test7 (amount2 double(5,2));
+insert into test7 values(4.26544);
+insert into test7 values(5);
+insert into test7 values(1110.6265);
+select*from test7;
+
+-- character 
+
+create table test8(city varchar(6));
+insert into test8 values('isha');
+insert into test8 values ('aus');
+insert into test8 values ('raj            ');
+select*,length(city)from  test8;
+
+create table test9(city varchar(6));
+insert into test9 values('isha');
+insert into test9 values ('aus');
+insert into test9 values ('raj            ');
+select*,char_length(city)from test9;
+
+
+
+
+
+
